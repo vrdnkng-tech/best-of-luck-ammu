@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Ammu 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  box-sizing:border-box;
+  font-family:"Segoe UI",sans-serif;
+}
+
+body{
+  margin:0;
+  height:100vh;
+  overflow:hidden;
+}
+
+#app{
+  width:100%;
+  height:100%;
+  position:relative;
+}
+
+/* COMMON BACKGROUND */
+.screen{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    135deg,
+    #fff1f7,
+    #fef6ff,
+    #f0f9ff
+  );
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  opacity:0;
+  transform:translateY(30px);
+  transition:0.7s ease;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+.screen.active{
+  opacity:1;
+  transform:translateY(0);
+  pointer-events:auto;
+}
+
+/* TEXT */
+.small{
+  font-style:italic;
+  margin-bottom:6px;
+}
+.pink{color:#ff7aa2}
+.purple{color:#9b7cff}
+
+.title{
+  font-size:2.4rem;
+  margin:10px 0;
+  color:#333;
+}
+
+.subtitle{
+  font-size:1rem;
+  color:#666;
+  line-height:1.6;
+}
+
+/* BUTTON */
+.cta{
+  margin-top:25px;
+  padding:16px 36px;
+  border:none;
+  border-radius:40px;
+  background:linear-gradient(135deg,#ff7aa2,#ff9fbf);
+  color:white;
+  font-size:16px;
+  box-shadow:0 12px 25px rgba(255,122,162,.4);
+  cursor:pointer;
+}
+.smallBtn{font-size:14px;padding:14px 30px}
+
+/* FLOATING SHAPES */
+.shape{
+  position:absolute;
+  border-radius:50%;
+  opacity:.45;
+  filter:blur(2px);
+  animation:float 10s infinite ease-in-out;
+}
+
+.shape.a{
+  width:180px;height:180px;
+  background:#ffd6e8;
+  top:-50px;left:-50px;
+}
+.shape.b{
+  width:120px;height:120px;
+  background:#dff0ff;
+  right:-30px;top:35%;
+  animation-delay:2s;
+}
+.shape.c{
+  width:220px;height:220px;
+  background:#ede2ff;
+  bottom:-80px;left:30%;
+  animation-delay:4s;
+}
+
+@keyframes float{
+  50%{transform:translateY(-25px) translateX(10px)}
+}
+
+/* GRID (PAGE 2) */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,70px);
+  gap:16px;
+  margin:25px 0;
+}
+.box{
+  width:70px;
+  height:70px;
+  background:#fff;
+  border-radius:20px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:26px;
+}
+.center{
+  background:#ffd6e0;
+  box-shadow:0 0 20px rgba(255,150,180,.8);
+  animation:glow 1.5s infinite;
+  cursor:pointer;
+}
+@keyframes glow{
+  50%{transform:scale(1.1)}
+}
+
+/* ENVELOPE */
+.envelope{
+  width:160px;height:120px;
+  background:#ffb6c1;
+  border-radius:20px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:42px;
+  box-shadow:0 15px 30px rgba(255,150,180,.4);
+  transition:.6s;
+  cursor:pointer;
+}
+.envelope.open{
+  transform:scale(1.15) rotate(6deg);
+}
+
+/* LETTER */
+.letter{
+  background:#fff;
+  padding:28px;
+  border-radius:22px;
+  width:85%;
+  max-width:360px;
+  box-shadow:0 20px 40px rgba(0,0,0,.08);
+}
+</style>
+</head>
+
+<body>
+
+<div id="app">
+
+  <!-- PAGE 1 -->
+  <section class="screen active" id="screen1">
+    <span class="shape a"></span>
+    <span class="shape b"></span>
+    <span class="shape c"></span>
+
+    <h2 class="small pink">a little note…</h2>
+    <h1 class="title">Hey Ammu 🌸</h1>
+    <p class="subtitle">
+      Bas ek chhota sa wish,<br>
+      jo dil se aaya hai 💖
+    </p>
+    <button class="cta" onclick="next()">Open Your Wish →</button>
+  </section>
+
+  <!-- PAGE 2 -->
+  <section class="screen" id="screen2">
+    <span class="shape a"></span>
+    <span class="shape b"></span>
+    <span class="shape c"></span>
+
+    <h2 class="small purple">before you go ahead…</h2>
+    <h1 class="title">Good Luck ✨</h1>
+
+    <div class="grid">
+      <div class="box">🍀</div>
+      <div class="box">✨</div>
+      <div class="box">🌸</div>
+
+      <div class="box">😊</div>
+      <div class="box center" onclick="next()">❤️</div>
+      <div class="box">🌈</div>
+
+      <div class="box">💫</div>
+      <div class="box">🌼</div>
+      <div class="box">⭐</div>
+    </div>
+
+    <p class="subtitle">Tap the heart 💖</p>
+  </section>
+
+  <!-- PAGE 3 -->
+  <section class="screen" id="screen3">
+    <span class="shape a"></span>
+    <span class="shape b"></span>
+    <span class="shape c"></span>
+
+    <h2 class="small pink">straight from my heart</h2>
+    <div class="envelope" onclick="openLetter()">💌</div>
+    <p class="subtitle">Tap to open</p>
+  </section>
+
+  <!-- PAGE 4 -->
+  <section class="screen" id="screen4">
+    <span class="shape a"></span>
+    <span class="shape b"></span>
+    <span class="shape c"></span>
+
+    <div class="letter">
+      <h2>All the Best Ammu 🌷</h2>
+      <p>
+        Kal ka paper hai,<br>
+        thoda nervous feel hona normal hai 😊<br><br>
+
+        Bas calm rehna,<br>
+        jo aata hai wo ache se likhna ✨<br><br>
+
+        Mujhe pata hai tu apna best degi.<br>
+        Main bas yahi wish kar raha hoon 🤍
+      </p>
+      <button class="cta smallBtn">Do Your Best 💖</button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+let current = 1;
+
+function next(){
+  document.getElementById("screen"+current).classList.remove("active");
+  current++;
+  document.getElementById("screen"+current).classList.add("active");
+}
+
+function openLetter(){
+  document.querySelector(".envelope").classList.add("open");
+  setTimeout(next,600);
+}
+</script>
+
+</body>
+      </html>
+      
